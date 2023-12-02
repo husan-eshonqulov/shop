@@ -1,4 +1,5 @@
 const mongo = require('mongodb');
+
 const MongoClient = mongo.MongoClient;
 
 let _db;
@@ -8,7 +9,7 @@ const mongoConnect = (callback) => {
     'mongodb+srv://husan:husan@shop.qbc0hcq.mongodb.net/shop?retryWrites=true&w=majority'
   )
     .then((client) => {
-      console.log('Connected!');
+      console.log('Mongodb connected!');
       _db = client.db();
       callback();
     })
