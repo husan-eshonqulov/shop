@@ -3,8 +3,6 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
 exports.getLogin = (req, res, next) => {
-  // const isLoggedIn = req.get('Cookie').split('=')[1] === 'true';
-  console.log(req.session);
   res.render('auth/login', {
     path: '/login',
     pageTitle: 'Login',
