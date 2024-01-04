@@ -18,4 +18,6 @@ router.get('/reset', authContoller.getReset);
 
 router.post('/reset', authContoller.postReset);
 
+router.get('/reset/:token', authContoller.getNewPassword);
+
 module.exports = router;
