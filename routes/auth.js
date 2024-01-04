@@ -16,4 +16,6 @@ router.post('/logout', authContoller.postLogout);
 
 router.get('/reset', authContoller.getReset);
 
+router.post('/reset', authContoller.postReset);
+
 module.exports = router;
