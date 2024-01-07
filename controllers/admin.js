@@ -1,9 +1,18 @@
 const Product = require('../models/product');
 
+exports.getProducts = (req, res, next) => {
+  Product.find({ userId: req.user._id })
+    .then((products) => {
+      res.render('admin/products', {
+        prods: products,
+        pageTitle: 'Admin Products',
+        path: '/admin/products',
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
 exports.getAddProduct = (req, res, next) => {
-  if (!req.session.isLoggedIn) {
-    return res.redirect('/login');
-  }
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
@@ -32,18 +41,6 @@ exports.postAddProduct = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
-};
-
-exports.getProducts = (req, res, next) => {
-  Product.find({ userId: req.user._id })
-    .then((products) => {
-      res.render('admin/products', {
-        prods: products,
-        pageTitle: 'Admin Products',
-        path: '/admin/products',
-      });
-    })
-    .catch((err) => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
